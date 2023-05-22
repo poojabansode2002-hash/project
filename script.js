@@ -29,6 +29,7 @@ app.get("/signin", function (request, response) {
             if (myDoc.firstname == username && myDoc.aadhar == password) {
                 console.clear()
                 console.log("succcesssfullly logged in");
+                response.sendFile(path.join(__dirname + "/farmeraccountID.html"))
             
             }
             else {
