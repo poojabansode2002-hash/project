@@ -1,0 +1,13 @@
+.hidden {
+    display: none;
+}
+<button style="font-size: 24px; padding: 10px 20px;">Parbhani Moti</button>
+
+a {
+    display: block; /* make each link a block element */
+    font-size: 20px; /* set the font size */
+    padding: 10px; /* add some padding to create space around the links */
+    text-decoration: none; /* remove the underline */
+    color: #333; /* set the text color */
+    border-bottom: 1px solid #ddd; /* add a bottom border */
+  }

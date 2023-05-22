@@ -1,0 +1,90 @@
+
+body 
+  {margin:0;font-family:Arial;
+
+  
+}
+html{
+ 
+ background-repeat: no-repeat;
+ -webkit-backdrop-size: cover;
+ -moz-background-size:cover ;
+ background-size: cover;
+ background-image: url('product image.jpeg');
+
+}
+
+.product-image {
+  background-image: url('product-image.jpeg');
+  background-repeat: no-repeat;
+  background-size: 200px 150px;
+}
+
+
+.Products{
+  width : 200px;
+  height : 50px;
+  font-size : medium;
+  font-style: bold;
+
+}
+.Fertilizers{
+  width : 220px;
+  height : 50px;
+  font-size : medium;
+  font-style: bold;
+
+}
+
+.Pesticides{
+  width : 210px;
+  height : 50px;
+  font-size : medium;
+  font-style: bold;
+
+}
+.button {
+  background-color: blue; /* Set the background color */
+  position: absolute;
+  top: 200px;
+  left: 20px;
+  border: none; /* Remove the border */
+  color: #fff ; /* Set the text color */
+  padding: 10px 20px; /* Add padding to the button */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* Remove underline from the text */
+  display: block; /* Display the button as a block element */
+  margin: 20px auto; /* Center the button horizontally and add some margin */
+  cursor: pointer; /* Add a cursor pointer on hover */
+}
+.button a {
+  color: #fff;
+}
+
+/* button:hover {
+  background-color: blue; 
+}/* Darken the background color on hover */
+ 
+
+#Next{
+  position: absolute;
+  top: 700px;
+  left: 1350px;
+  width: 80px;
+  height: 30px;
+  font-size: medium;
+  color: white;
+  background-color: blue;
+
+}
+#Previous{
+  position: absolute;
+  top: 700px;
+  right: 1350px;
+  width: 80px;
+  height: 30px;
+  font-size: medium;
+  color: white;
+  background-color: blue;
+
+}

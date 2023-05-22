@@ -1,0 +1,57 @@
+
+form {
+    margin: 20px auto;
+    padding: 50px;
+    max-width: 600px;
+    height: 300px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+} 
+    
+/* Style the heading */
+h1 {
+	text-align: center;
+	margin-top: 20px;
+}
+
+/* Style the form labels */
+form label {
+	display: inline-block;
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+/* Style the input fields */
+form input[type="text"],
+form input[type="text"],
+form input[type="teext"],
+
+form textarea {
+	display: block;
+	margin-top: 5px;
+	padding: 5px;
+	width: 100%;
+	font-size: 16px;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+.registerbtn {
+    background-color: blue; /* Green background */
+    border: none; /* No border */
+    color: white; /* White text */
+    padding: 10px 20px; /* Some padding */
+    text-align: center; /* Center text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Display as inline block */
+    font-size: 16px; /* Font size */
+    margin: 4px 2px; /* Add some margin */
+    cursor: pointer; /* Cursor on hover */
+    border-radius: 4px; /* Rounded corners */
+  }
+  
+  .registerbtn:hover {
+    background-color: blue; /* Darker green background on hover */
+  }
+  

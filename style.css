@@ -1,0 +1,92 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+body{
+	background-image: url("contact image.jpg");
+	background-color:("lightgreen");
+	background-repeat:no-repeat;
+	background-size: cover;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	font-family: sans-serif;
+	text-align: center;
+}
+/* body{
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+} */
+.container{
+	position: relative;
+	margin-top: 100px;
+	width: 500x;
+	height: auto;
+	background: #dedede;
+	border-radius: 5px;
+}
+.label{
+	padding: 20px 130px;
+	font-size: 30px;
+	font-weight: bold;
+	color: #130f40;
+}
+.login_form{
+	padding: 40px 40px;
+}
+.login_form .font{
+	font-size: 18px;
+	color: #130f40;
+	margin: 7px 0;
+}
+.login_form input{
+	height: 60px;
+	width: 350px;
+	padding: 0 5px;
+	font-size: 18px;
+	outline: none;
+	border: 1px solid silver;
+}
+.login_form .font2{
+	margin-top: 30px;
+}
+.login_form button{
+	margin: 45px 0 30px 0;
+	height: 45px;
+	width: 365px;
+	font-size: 20px;
+	color: white;
+	outline: none;
+	cursor: pointer;
+	font-weight: bold;
+	background: #1A237E;
+	border-radius: 3px;
+	border: 1px solid #3949AB;
+	transition: .5s;
+}
+.login_form button:hover{
+	background: #151c6a;
+}
+.login_form #user name_error,
+.login_form #Aadhar card number_error{
+	margin-top: 5px;
+	width: 345px;
+	font-size: 18px;
+	color: #cf6666;
+	background: rgba(187, 138, 138, 0.1);
+	text-align: center;
+	padding: 5px 8px;
+	border-radius: 3px;
+	border: 1px solid #EF9A9A;
+	display: none;
+}
+.submit button{
+  width : 175px;
+  height : 50px;
+  font-size : medium;
+  font-style: bold;
+}  
+  
+
+

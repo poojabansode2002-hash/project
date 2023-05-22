@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Farmer Account page</title>
+    <link rel="stylesheet" href="farmers account page.css">
+    <style>
+      /* style for the form container */
+form {
+    margin: 20px auto;
+    padding: 50px;
+    max-width: 1000px;
+    height: 600px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #aaa;
+  }
+  
+  /* style for the form labels */
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* style for the form inputs */
+  input[type="text"],
+  input[type="Aadhar Card Number"],
+  input[type="tel"],
+  input[type="Phone Number"],
+  input[type="text"],
+  input[type="number"],
+  input[type="file"],
+
+
+  textarea {
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #eee;
+    width: 100%;
+  }
+  
+  /* style for the form submit button */
+  input[type="submit"] {
+    background-color: blue;
+    color: white;
+    padding: 10px 35px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  /* style for the form submit button on hover */
+  input[type="submit"]:hover {
+    background-color:blue;
+  }
+    </style>
+
+  </head>
+  <body>
+    <center><h1>Farmer Account Page</h1></center>
+    <form method="get|post" action="/farmeraccountpage">
+      <label for="Farmer full-name">Farmer full Name:</label>
+    <input type="text" id="fullname" name="fullname" pattern="[A-Za-z ]+" title="Enter only alphabets" required>
+      <br>
+      <label for="Aadhar Card Number">Aadhar Card Number:</label>
+      <input type="text" id="aadhar" name="aadhar" pattern="[0-9]{12}" title="Enter Max 12 digits" required>
+      <br>
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" title="Enter max 10 digits" required>
+      <br>
+      <label for="date of birth">Date of birth:</label>
+      <input type="text" id="date-of-birth" name="date-of-birth" pattern="\d{1,2}/\d{1,2}/\d{4}" placeholder="dd/mm/yyyy" required>
+      <br>
+      <label for="farmer-age">Farmer Age:</label>
+      <input type="number" id="age" name="age" min="16" max="100" required>
+
+      <label for="current address">Current Address:</label>
+      <textarea id="currentadd" name="currentadd" rows="3" required></textarea>
+      <br>
+      <label for="Permanent address">Permanent Address:</label>
+      <textarea id="permanentadd" name="permanentadd" rows="3" required></textarea>
+      <br>
+      <label for="Passport photo">Passport photo:</label>
+      <input type="file" id="passport-photo" name="passport_photo" accept=".jpg,.jpeg,.png,.gif" required>
+
+      <center><input type="submit" value="Submit" ></center>
+    </form>
+  </body>
+</html>
+
+

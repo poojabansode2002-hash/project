@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Popup</title>
+        <link rel="stylesheet" href="register popup.css">
+    
+    </head>
+    <body>
+        <div class="container">
+            <button type="Register" class="btn" onclick="openPopup()">Register</button>
+            <div class="popup" id="popup">
+                <img src="checkmark image.jpg">
+                <h2>Thank You</h2>
+                <p>Your details have been sucessfully registered. Thanks!</p>
+                <button type="button" onclick="closePopup()">OK</button>
+            </div>
+        </div>
+        <script>
+            let Popup = document.getElementById("Popup");
+
+            function openPopup(){
+                Popup.classlist.add("open.Popup");
+            }
+            function openPopup(){
+                Popup.classlist.remove("open.Popup");
+            }
+        </script>
+    </body>
+</html>
