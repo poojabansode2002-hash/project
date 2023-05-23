@@ -1,42 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Table Creation</title>
   <style>
     table {
       border-collapse: collapse;
       width: 100%;
     }
     th, td {
+      border: 1px solid black;
       padding: 8px;
       text-align: left;
-      border-bottom: 1px solid #ddd;
     }
     th {
       background-color: #f2f2f2;
     }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    .options-row {
+      background-color: #f2f2f2;
+    }
+    .options-row td {
+      border: none;
+    }
+    input {
+      width: 100%;
+      box-sizing: border-box;
+    }
   </style>
+  <script>
+    function addRow() {
+      var table = document.getElementById("myTable");
+      var row = table.insertRow(table.rows.length - 1); // Insert before the last row (options row)
+
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      var cell3 = row.insertCell(2);
+      var cell4 = row.insertCell(3);
+      var cell5 = row.insertCell(4);
+
+
+      cell1.innerHTML = '<input type="text" name="data1">';
+      cell2.innerHTML = '<input type="text" name="data2">';
+      cell3.innerHTML = '<input type="text" name="data3">';
+      cell4.innerHTML = '<input type="text" name="data4">';
+      cell5.innerHTML = '<input type="text" name="data5">';
+    }
+  </script>
 </head>
 <body>
-  <h1>Product Table</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Sr No.</th>
-        <th> Type</th>
-
-        <th>Item</th>
-        <th>Date</th>
-        <th> Total Amount</th>
-        <th> Paid</th>
-      <th>Remain</th>
-    </thead>
-    <tbody>
-      <tr>
+  <table id="myTable">
+    <tr>
+      <th>Sr.No</th>
+      <th>Item</th>
+      <th>Total Amount</th>
+      <th>Paid AMount</th>
+      <th>Remaining Amount</th>
+    </tr>
+    <tr>
+      <td><input type="" name="" value=""></td>
+      <td><input type="" name="" value=""></td>
+      <td><input type="" name="" value=""></td>
+      <td><input type="" name="" value=""></td>
+      <td><input type="" name="" value=""></td>
+    </tr>
+    <tr>
+      <td><input type="" name="" value=""></td>
+      <td><input type="" name="" value=""></td>
+      <td><input type="" name="" value=""></td>
+      <td><input type="" name="" value=""></td>
+      <td><input type="" name="" value=""></td>
+    </tr>
+    <tr class="options-row">
+      <td colspan="5">
+        <button onclick="addRow()">Add Row</button>
         
-      </tr>
-      
-    </tbody>
+        <br><input type="submit" value="Submit"><br>
+        <br>
+      </td>
+    </tr>
   </table>
 </body>
 </html>
