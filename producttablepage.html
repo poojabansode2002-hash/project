@@ -27,8 +27,27 @@
       width: 100%;
       box-sizing: border-box;
     }
+    input[type="submit"]:hover {
+    background-color:blue;
+  }
+  .inputform{
+    
+    height: 500px;
+    width: 50%;
+    margin-left: 25%;
+
+
+  }
+  .inputform input {
+    height: 40px;
+    border-radius: 20px;
+    text-align: center;
+  }
+
+
   </style>
   <script>
+    var i = 0;
     function addRow() {
       var table = document.getElementById("myTable");
       var row = table.insertRow(table.rows.length - 1); // Insert before the last row (options row)
@@ -38,6 +57,7 @@
       var cell3 = row.insertCell(2);
       var cell4 = row.insertCell(3);
       var cell5 = row.insertCell(4);
+      var cell6 = row.insertCell(5);
 
 
       cell1.innerHTML = '<input type="text" name="data1">';
@@ -45,40 +65,90 @@
       cell3.innerHTML = '<input type="text" name="data3">';
       cell4.innerHTML = '<input type="text" name="data4">';
       cell5.innerHTML = '<input type="text" name="data5">';
+      cell6.innerHTML = '<input type="text" name="data6">';
+    }
+    function addtolist(){
+      event.preventDefault();
+      i = i + 1
+      var item = document.getElementById('item').value;
+      var date = document.getElementById('date').value;
+      var totalAmount = document.getElementById('totalAmount').value;
+      var paidAmount = document.getElementById('paidAmount').value;
+      var remainAmount = document.getElementById('remainAmount').value;
+      
+     table = document.getElementById("myTable");
+      table.innerHTML += `
+      <tr>
+      <td>${i}</td>
+      <td>${item}</td>
+      <td>${date}</td>
+      <td>${totalAmount}</td>
+      <td>${paidAmount}</td>
+      <td>${remainAmount}</td>
+      
+    </tr>
+      
+      
+      `;
+
+      
+
     }
   </script>
 </head>
 <body>
+  
+    <form class="inputform">
+      <input type="text" id="item" placeholder="item">
+      <br><br>
+      <input type="text" id="date">
+      <br><br>
+      <input type="text" id="totalAmount">
+      <br><br>
+      <input type="text" id="paidAmount">
+      <br><br>
+      <input type="text" id="remainAmount">
+      <br><br>
+      
+      <button onclick="addtolist()">Add to List</button>
+
+    </form>
+
+    
+  
   <table id="myTable">
     <tr>
       <th>Sr.No</th>
       <th>Item</th>
+      <th>Date</th>
       <th>Total Amount</th>
       <th>Paid AMount</th>
       <th>Remaining Amount</th>
     </tr>
-    <tr>
+    <!-- <tr>
       <td><input type="" name="" value=""></td>
-      <td><input type="" name="" value=""></td>
-      <td><input type="" name="" value=""></td>
-      <td><input type="" name="" value=""></td>
-      <td><input type="" name="" value=""></td>
-    </tr>
-    <tr>
       <td><input type="" name="" value=""></td>
       <td><input type="" name="" value=""></td>
       <td><input type="" name="" value=""></td>
       <td><input type="" name="" value=""></td>
       <td><input type="" name="" value=""></td>
     </tr>
-    <tr class="options-row">
-      <td colspan="5">
+    <tr>
+      <td><input type="" name="" value=""></td>
+      <td><input type="" name="" value=""></td>
+      <td><input type="" name="" value=""></td>
+      <td><input type="" name="" value=""></td>
+      <td><input type="" name="" value=""></td>
+      <td><input type="" name="" value=""></td>
+    </tr> -->
+    <!-- <tr class="options-row">
+      <td colspan="6">
         <button onclick="addRow()">Add Row</button>
         
-        <br><input type="submit" value="Submit"><br>
+        <br><button type="Submit" id="Submit">Submit </button>
         <br>
       </td>
-    </tr>
+    </tr> -->
   </table>
 </body>
 </html>
