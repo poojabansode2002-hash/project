@@ -48,6 +48,7 @@
   </style>
   <script>
     var i = 0;
+    var products = []
     function addRow() {
       var table = document.getElementById("myTable");
       var row = table.insertRow(table.rows.length - 1); // Insert before the last row (options row)
@@ -75,7 +76,9 @@
       var totalAmount = document.getElementById('totalAmount').value;
       var paidAmount = document.getElementById('paidAmount').value;
       var remainAmount = document.getElementById('remainAmount').value;
-      
+      let product = [[i,item,date,totalAmount,paidAmount,remainAmount]]
+      products.push(product)
+      localStorage.setItem("products", products);
      table = document.getElementById("myTable");
       table.innerHTML += `
       <tr>
@@ -92,8 +95,49 @@
       `;
 
       
+        const requestOptions = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(products)
+        };
+        fetch("/items", requestOptions)
+            .then(response => response.json())
+            .then(res => console.log(res));
+        e.target.reset()
+    };
 
-    }
+
+      
+
+    
+    const senditems = (e) => {
+    
+    e.preventDefault();
+
+  
+      console.log(products);
+      fetch("/items", {
+        method: "POST",
+        headers: {
+        
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(products),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Error Request");
+          }
+          console.log(response)
+          return response.json();
+        })
+        .then((json) => console.log(json))
+        .catch((error) => console.log(error));
+
+  
+    };
+
   </script>
 </head>
 <body>
@@ -150,5 +194,16 @@
       </td>
     </tr> -->
   </table>
+
+  <!-- <form method="get|post" action="/items">
+
+    <input type="hidden" id="items" name="items" >
+
+    <center><button type="submit"><strong>Submit</strong></button></center>
+
+</form> -->
+<form onsubmit="senditems()">
+<button  type="submit">submit</button>
+</form>
 </body>
 </html>
