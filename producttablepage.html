@@ -76,7 +76,7 @@
       var totalAmount = document.getElementById('totalAmount').value;
       var paidAmount = document.getElementById('paidAmount').value;
       var remainAmount = document.getElementById('remainAmount').value;
-      let product = [[i,item,date,totalAmount,paidAmount,remainAmount]]
+      let product = [i,item,date,totalAmount,paidAmount,remainAmount]
       products.push(product)
       localStorage.setItem("products", products);
      table = document.getElementById("myTable");
@@ -95,15 +95,7 @@
       `;
 
       
-        const requestOptions = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(products)
-        };
-        fetch("/items", requestOptions)
-            .then(response => response.json())
-            .then(res => console.log(res));
-        e.target.reset()
+
     };
 
 
@@ -136,6 +128,24 @@
         .catch((error) => console.log(error));
 
   
+    };
+       const sendData = async () => {
+        const data = {
+          name: 'John',
+          age: 30,
+          hobbies: ['reading', 'coding']
+        };
+
+        const response = await fetch('/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(products)
+        });
+
+        const result = await response.text();
+        console.log(result);
     };
 
   </script>
@@ -202,8 +212,8 @@
     <center><button type="submit"><strong>Submit</strong></button></center>
 
 </form> -->
-<form onsubmit="senditems()">
-<button  type="submit">submit</button>
-</form>
+
+<button  type="submit" onclick="sendData()">submit</button>
+
 </body>
 </html>

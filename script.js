@@ -6,9 +6,9 @@ const client = new MongoClient(url);
 const dbName = "test";
 
 const path = require('path');
-
+app.use(express.json());
 app.get("/", function (request, response) {
-    response.sendFile(__dirname + "/home.html");
+    response.sendFile(__dirname + "/producttablepage.html");
 });
 
 app.get("/signup", function (request, response) {
@@ -80,6 +80,35 @@ app.get("/getpage", function (request, response) {
     }
     run().catch(console.dir);
 });
+
+app.get("/items", function (request, response) {
+    var products = request.body;
+    
+    console.log("items page is working")
+
+    async function run() {
+        try {
+            await client.connect();
+            console.log("Connected correctly to server for items");
+            const db = client.db(dbName);
+            const col = db.collection("items");
+            let personDocument = {
+                "products": products,
+                
+            }
+            console.log("inserted the items")
+            await col.insertOne(personDocument);
+            
+        } catch (err) {
+            console.log(err.stack);
+        }
+        finally {
+            await client.close();
+        }
+    }
+    run().catch(console.dir);
+});
+
 app.get("/farmeraccountpage", function (request, response) {
     var fullname = request.query.fullname;
     var aadhar = request.query.aadhar;
@@ -161,6 +190,9 @@ app.get("/getlinkContact", function (request, response) {
 app.get("/getlinksignin", function (request, response) {
     response.sendFile(path.join(__dirname + "/signin.html"))
 });
+app.get("/getlinknext", function (request, response) {
+    response.sendFile(path.join(__dirname + "/producttablepage.html"))
+});
 app.get("/getlinkregister", function (request, response) {
     response.sendFile(path.join(__dirname + "/registeration.html"))
 });
@@ -174,6 +206,33 @@ app.get("/getlinkKnowmore", function (request, response) {
 app.get("/getlinkfarmeraccount", function (request, response) {
     response.sendFile(path.join(__dirname + "/farmersaccountpage.html"))
 });
+app.post('/submit', (req, res) => {
+    const jsonData = req.body; // Get the submitted JSON data
+    console.log('Received data:', jsonData);
+
+    async function run() {
+        try {
+            await client.connect();
+            console.log("Connected correctly to server");
+            const db = client.db(dbName);
+            const col = db.collection("items");
+            let personDocument = {
+                "data": jsonData,
+            
+            }
+            console.log("inserted")
+            await col.insertOne(personDocument);
+
+        } catch (err) {
+            console.log(err.stack);
+        }
+        finally {
+            await client.close();
+        }
+    }
+    run().catch(console.dir);
+
+  });
 const port = 3002
 app.listen(process.env.PORT || port)
 console.log("Something awesome to happen at http://localhost:" + port);
