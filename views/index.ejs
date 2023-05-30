@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Krushi Kendra Center - Receipt</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    .receipt-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .receipt-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .receipt-details {
+      margin-bottom: 20px;
+    }
+    
+    .receipt-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 10px;
+    }
+    
+    .receipt-table th,
+    .receipt-table td {
+      padding: 8px;
+      border: 1px solid #000;
+    }
+    
+    .receipt-table th {
+      background-color: #f2f2f2;
+      text-align: left;
+    }
+    
+    .receipt-total {
+      text-align: right;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    
+    .receipt-footer {
+      margin-top: 50px;
+      text-align: center;
+    }
+  </style>
+  <script>
+    
+  var data 
+    fetch("/api")
+      .then((res) => res.json())
+      .then((data) => {
+
+         data = data;
+      });
+  
+    
+  </script>
+</head>
+<body>
+
+  <div class="receipt-header">
+    <h1 class="receipt-title">Krushi Kendra Center</h1>
+    <p>Address, City, Country</p>
+    <p>Phone: 123-456-7890 | Email: info@example.com</p>
+  </div>
+  
+  <div class="receipt-details">
+    <table class="receipt-table">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+        
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+ 
+    
+              <% receipt.forEach(function(item) { %>
+                
+                <tr>
+                    <td><%= item[1] %></td>
+                    <td><%= item[3] %></td>
+                
+                    
+                  </tr>
+              <% }); %>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="receipt-total">
+    <p>Total Quantity: 6</p>
+    <p>Total Amount: $425.00</p>
+  </div>
+  
+  <div class="receipt-footer">
+    <p>Thank you for your visit!</p>
+  </div>
+</body>
+</html>
