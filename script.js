@@ -7,6 +7,10 @@ const dbName = "test";
 
 const path = require('path');
 app.use(express.json());
+
+app.set('view engine', 'ejs');
+
+
 app.get("/", function (request, response) {
     response.sendFile(__dirname + "/producttablepage.html");
 });
@@ -206,6 +210,7 @@ app.get("/getlinkKnowmore", function (request, response) {
 app.get("/getlinkfarmeraccount", function (request, response) {
     response.sendFile(path.join(__dirname + "/farmersaccountpage.html"))
 });
+var receipt;
 app.post('/submit', (req, res) => {
     const jsonData = req.body; // Get the submitted JSON data
     console.log('Received data:', jsonData);
@@ -220,8 +225,10 @@ app.post('/submit', (req, res) => {
                 "data": jsonData,
             
             }
+            receipt = jsonData
             console.log("inserted")
             await col.insertOne(personDocument);
+         
 
         } catch (err) {
             console.log(err.stack);
@@ -233,6 +240,60 @@ app.post('/submit', (req, res) => {
     run().catch(console.dir);
 
   });
+
+  app.get("/api", function (request, response) {
+
+    async function run() {
+        try {
+            await client.connect();
+            const db = client.db(dbName);
+            const col = db.collection("hospital_info");
+            const myDoc = await col.find({}).toArray();
+
+            response.json(myDoc);
+
+        } catch (err) {
+            console.log(err.stack);
+        }
+        finally {
+            await client.close();
+        }
+    }
+    run().catch(console.dir);
+
+});
+
+
+
+
+app.set('view engine', 'ejs');
+
+app.get('/receipt', (req, res) => {
+
+    // async function run() {
+    //     try {
+    //         await client.connect();
+    //         const db = client.db(dbName);
+    //         const col = db.collection("items");
+    //         const myDoc = await col.find({}).toArray();
+
+    //         // response.json(myDoc);
+    //         res.render('index', { myDoc });
+
+    //     } catch (err) {
+    //         console.log(err.stack);
+    //     }
+    //     finally {
+    //         await client.close();
+    //     }
+    // }
+    // run().catch(console.dir);
+    res.render('index', { receipt });
+
+
+  });
+
+
 const port = 3002
 app.listen(process.env.PORT || port)
 console.log("Something awesome to happen at http://localhost:" + port);
