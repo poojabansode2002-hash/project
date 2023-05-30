@@ -102,39 +102,9 @@
       
 
     
-    const senditems = (e) => {
-    
-    e.preventDefault();
-
-  
-      console.log(products);
-      fetch("/items", {
-        method: "POST",
-        headers: {
-        
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(products),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Error Request");
-          }
-          console.log(response)
-          return response.json();
-        })
-        .then((json) => console.log(json))
-        .catch((error) => console.log(error));
-
-  
-    };
+ 
        const sendData = async () => {
-        const data = {
-          name: 'John',
-          age: 30,
-          hobbies: ['reading', 'coding']
-        };
+  
 
         const response = await fetch('/submit', {
           method: 'POST',
@@ -151,6 +121,7 @@
   </script>
 </head>
 <body>
+  
   
     <form class="inputform">
       <input type="text" id="item" placeholder="item">
@@ -179,41 +150,12 @@
       <th>Paid AMount</th>
       <th>Remaining Amount</th>
     </tr>
-    <!-- <tr>
-      <td><input type="" name="" value=""></td>
-      <td><input type="" name="" value=""></td>
-      <td><input type="" name="" value=""></td>
-      <td><input type="" name="" value=""></td>
-      <td><input type="" name="" value=""></td>
-      <td><input type="" name="" value=""></td>
-    </tr>
-    <tr>
-      <td><input type="" name="" value=""></td>
-      <td><input type="" name="" value=""></td>
-      <td><input type="" name="" value=""></td>
-      <td><input type="" name="" value=""></td>
-      <td><input type="" name="" value=""></td>
-      <td><input type="" name="" value=""></td>
-    </tr> -->
-    <!-- <tr class="options-row">
-      <td colspan="6">
-        <button onclick="addRow()">Add Row</button>
-        
-        <br><button type="Submit" id="Submit">Submit </button>
-        <br>
-      </td>
-    </tr> -->
+
   </table>
 
-  <!-- <form method="get|post" action="/items">
 
-    <input type="hidden" id="items" name="items" >
 
-    <center><button type="submit"><strong>Submit</strong></button></center>
-
-</form> -->
-
-<button  type="submit" onclick="sendData()">submit</button>
+<button  type="submit" onclick="sendData()"><a href="/receipt">submit</a></button>
 
 </body>
 </html>
