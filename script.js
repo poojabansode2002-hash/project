@@ -11,15 +11,15 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 
 
-app.get("/", function (request, response) {
-    response.sendFile(__dirname + "/producttablepage.html");
+app.get("/", function(request, response) {
+    response.sendFile(__dirname + "/home.html");
 });
 
-app.get("/signup", function (request, response) {
+app.get("/signup", function(request, response) {
     response.sendFile("http://localhost:3000");
 });
 
-app.get("/signin", function (request, response) {
+app.get("/signin", function(request, response) {
     var username = request.query.username;
     var password = request.query.aadhar;
     console.log(username, password);
@@ -34,18 +34,15 @@ app.get("/signin", function (request, response) {
                 console.clear()
                 console.log("succcesssfullly logged in");
                 response.sendFile(path.join(__dirname + "/farmeraccountID.html"))
-            
-            }
-            else {
+
+            } else {
                 console.clear()
                 console.log("invallllid");
-                
+
             }
         } catch (err) {
             console.log(err.stack);
-        }
-
-        finally {
+        } finally {
             await client.close();
         }
     }
@@ -55,7 +52,7 @@ app.get("/signin", function (request, response) {
 
 });
 
-app.get("/getpage", function (request, response) {
+app.get("/getpage", function(request, response) {
     var username = request.query.first_name;
     var number = request.query.aadhar_card_number;
     var question = request.query.last_name;
@@ -77,17 +74,16 @@ app.get("/getpage", function (request, response) {
             response.sendFile(__dirname + "/farmersaccountpage.html");
         } catch (err) {
             console.log(err.stack);
-        }
-        finally {
+        } finally {
             await client.close();
         }
     }
     run().catch(console.dir);
 });
 
-app.get("/items", function (request, response) {
+app.get("/items", function(request, response) {
     var products = request.body;
-    
+
     console.log("items page is working")
 
     async function run() {
@@ -98,29 +94,28 @@ app.get("/items", function (request, response) {
             const col = db.collection("items");
             let personDocument = {
                 "products": products,
-                
+
             }
             console.log("inserted the items")
             await col.insertOne(personDocument);
-            
+
         } catch (err) {
             console.log(err.stack);
-        }
-        finally {
+        } finally {
             await client.close();
         }
     }
     run().catch(console.dir);
 });
 
-app.get("/farmeraccountpage", function (request, response) {
+app.get("/farmeraccountpage", function(request, response) {
     var fullname = request.query.fullname;
     var aadhar = request.query.aadhar;
     var phone = request.query.phone;
     var age = request.query.age;
     var currentadd = request.query.currentadd;
     var permanentadd = request.query.permanentadd;
-    
+
     console.log("farmeraccount page is working")
 
     async function run() {
@@ -142,15 +137,14 @@ app.get("/farmeraccountpage", function (request, response) {
             response.sendFile(path.join(__dirname + "/farmeraccountID.html"))
         } catch (err) {
             console.log(err.stack);
-        }
-        finally {
+        } finally {
             await client.close();
         }
     }
     run().catch(console.dir);
 });
 
-app.get("/getcontact", function (request, response) {
+app.get("/getcontact", function(request, response) {
     var name = request.query.name;
     var mobile = request.query.mobile;
     var message = request.query.message;
@@ -171,43 +165,42 @@ app.get("/getcontact", function (request, response) {
             await col.insertOne(personDocument);
         } catch (err) {
             console.log(err.stack);
-        }
-        finally {
+        } finally {
             await client.close();
         }
     }
     run().catch(console.dir);
 });
 
-app.get("/getlinkHome", function (request, response) {
+app.get("/getlinkHome", function(request, response) {
     response.sendFile(path.join(__dirname + "/home.html"))
 });
 
-app.get("/getlinkProducts", function (request, response) {
+app.get("/getlinkProducts", function(request, response) {
     response.sendFile(path.join(__dirname + "/Products.html"))
 });
 
-app.get("/getlinkContact", function (request, response) {
+app.get("/getlinkContact", function(request, response) {
     response.sendFile(path.join(__dirname + "/Contact.html"))
 });
 
-app.get("/getlinksignin", function (request, response) {
+app.get("/getlinksignin", function(request, response) {
     response.sendFile(path.join(__dirname + "/signin.html"))
 });
-app.get("/getlinknext", function (request, response) {
+app.get("/getlinknext", function(request, response) {
     response.sendFile(path.join(__dirname + "/producttablepage.html"))
 });
-app.get("/getlinkregister", function (request, response) {
+app.get("/getlinkregister", function(request, response) {
     response.sendFile(path.join(__dirname + "/registeration.html"))
 });
 
 
-app.get("/getlinkKnowmore", function (request, response) {
+app.get("/getlinkKnowmore", function(request, response) {
     response.sendFile(path.join(__dirname + "/Introduction.html"))
 });
 
 
-app.get("/getlinkfarmeraccount", function (request, response) {
+app.get("/getlinkfarmeraccount", function(request, response) {
     response.sendFile(path.join(__dirname + "/farmersaccountpage.html"))
 });
 var receipt;
@@ -223,25 +216,24 @@ app.post('/submit', (req, res) => {
             const col = db.collection("items");
             let personDocument = {
                 "data": jsonData,
-            
+
             }
             receipt = jsonData
             console.log("inserted")
             await col.insertOne(personDocument);
-         
+
 
         } catch (err) {
             console.log(err.stack);
-        }
-        finally {
+        } finally {
             await client.close();
         }
     }
     run().catch(console.dir);
 
-  });
+});
 
-  app.get("/api", function (request, response) {
+app.get("/api", function(request, response) {
 
     async function run() {
         try {
@@ -254,8 +246,7 @@ app.post('/submit', (req, res) => {
 
         } catch (err) {
             console.log(err.stack);
-        }
-        finally {
+        } finally {
             await client.close();
         }
     }
@@ -291,9 +282,9 @@ app.get('/receipt', (req, res) => {
     res.render('index', { receipt });
 
 
-  });
+});
 
 
-const port = 3002
+const port = 3000
 app.listen(process.env.PORT || port)
 console.log("Something awesome to happen at http://localhost:" + port);
