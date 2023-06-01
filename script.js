@@ -52,6 +52,39 @@ app.get("/signin", function(request, response) {
 
 });
 
+app.get("/adminsignin", function(request, response) {
+    var username = request.query.username;
+    var password = request.query.password;
+    console.log(username, password);
+    async function run() {
+        try {
+            await client.connect();
+            console.log("Connected correctly to admin server");
+            const db = client.db(dbName);
+            const col = db.collection("admin");
+            const myDoc = await col.findOne({ "firstname": username });
+            if (myDoc.fullname == username && myDoc.password == password) {
+                console.clear()
+                console.log("succcesssfullly logged in");
+                response.sendFile(path.join(__dirname + "/farmeraccountID.html"))
+
+            } else {
+                console.clear()
+                console.log("invallllid");
+
+            }
+        } catch (err) {
+            console.log(err.stack);
+        } finally {
+            await client.close();
+        }
+    }
+
+    run().catch(console.dir);
+
+
+});
+
 app.get("/getpage", function(request, response) {
     var username = request.query.first_name;
     var number = request.query.aadhar_card_number;
@@ -134,7 +167,46 @@ app.get("/farmeraccountpage", function(request, response) {
             }
             console.log("inserted")
             await col.insertOne(personDocument);
-            response.sendFile(path.join(__dirname + "/farmeraccountID.html"))
+            response.sendFile(path.join(__dirname + "/registerSuccessful.html"))
+        } catch (err) {
+            console.log(err.stack);
+        } finally {
+            await client.close();
+        }
+    }
+    run().catch(console.dir);
+});
+
+app.get("/shopkeeperaccount", function(request, response) {
+    var fullname = request.query.fullname;
+    var password = request.query.password;
+    var password1 = request.query.password1;
+    
+    var phone = request.query.phone;
+    var age = request.query.age;
+    var currentadd = request.query.currentadd;
+    var permanentadd = request.query.permanentadd;
+
+    console.log("shopkeeper account page is working")
+
+    async function run() {
+        try {
+            await client.connect();
+            console.log("Connected correctly to server");
+            const db = client.db(dbName);
+            const col = db.collection("admin");
+            let personDocument = {
+                "fullname": fullname,
+                "password": password,
+                "phone": phone,
+                "age": age,
+                "currentadd": currentadd,
+                "permanentadd": permanentadd,
+            }
+            if(password === password1){
+            console.log("shopkeeperaccount inserted")
+            await col.insertOne(personDocument);
+            response.sendFile(path.join(__dirname + "/registerSuccessful.html"))}
         } catch (err) {
             console.log(err.stack);
         } finally {
@@ -187,11 +259,18 @@ app.get("/getlinkContact", function(request, response) {
 app.get("/getlinksignin", function(request, response) {
     response.sendFile(path.join(__dirname + "/signin.html"))
 });
+
+app.get("/getlinkadmin", function(request, response) {
+    response.sendFile(path.join(__dirname + "/admin_signin.html"))
+});
 app.get("/getlinknext", function(request, response) {
     response.sendFile(path.join(__dirname + "/producttablepage.html"))
 });
 app.get("/getlinkregister", function(request, response) {
     response.sendFile(path.join(__dirname + "/registeration.html"))
+});
+app.get("/getlinkregisteradmin", function(request, response) {
+    response.sendFile(path.join(__dirname + "/shopkeeperaccount.html"))
 });
 
 
@@ -203,6 +282,34 @@ app.get("/getlinkKnowmore", function(request, response) {
 app.get("/getlinkfarmeraccount", function(request, response) {
     response.sendFile(path.join(__dirname + "/farmersaccountpage.html"))
 });
+app.get("/gettoshowmore", function(request, response) {
+    response.sendFile(path.join(__dirname + "/showmore.html"))
+});
+app.get("/toor", function(request, response) {
+    response.sendFile(path.join(__dirname + "/Toor.html"))
+});
+app.get("/jowar", function(request, response) {
+    response.sendFile(path.join(__dirname + "/Jowar.html"))
+});
+app.get("/maize", function(request, response) {
+    response.sendFile(path.join(__dirname + "/Maize.html"))
+});
+app.get("/soyabean", function(request, response) {
+    response.sendFile(path.join(__dirname + "/Soyabean.html"))
+});
+app.get("/cotton", function(request, response) {
+    response.sendFile(path.join(__dirname + "/Cotton.html"))
+});
+app.get("/turmeric", function(request, response) {
+    response.sendFile(path.join(__dirname + "/Turmeric.html"))
+});
+app.get("/wheat", function(request, response) {
+    response.sendFile(path.join(__dirname + "/Wheat.html"))
+});
+
+
+
+
 var receipt;
 app.post('/submit', (req, res) => {
     const jsonData = req.body; // Get the submitted JSON data
